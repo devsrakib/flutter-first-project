@@ -98,14 +98,303 @@ class HomeActivity extends StatelessWidget {
           }),
       drawer: Drawer(
         child: ListView(children: [
-          DrawerHeader(child: Text('Drawer Header')),
-          ListTile(title: Text('Home')),
-          ListTile(title: Text('Contact')),
-          ListTile(title: Text('Service')),
-          ListTile(title: Text('Settings')),
+          DrawerHeader(
+            padding: EdgeInsets.all(0),
+            decoration:BoxDecoration(
+               color: Colors.blueGrey,
+               borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(10),
+                topRight: Radius.circular(10),
+                  topLeft: Radius.circular(10),
+                )
+            ),
+            child: Center(
+              // Centers the content both horizontally and vertically
+              child: Column(
+                mainAxisAlignment:
+                    MainAxisAlignment.center, // Vertical alignment
+                crossAxisAlignment:
+                    CrossAxisAlignment.center, // Horizontal alignment
+                children: [
+                  CircleAvatar(
+                    backgroundImage: NetworkImage(
+                      'https://e7.pngegg.com/pngimages/58/887/png-clipart-cat-cute-thing-cat.png',
+                    ),
+                    radius: 40, // Size of the profile picture
+                  ),
+                  SizedBox(height: 10), // Space between picture and name
+                  Text(
+                    'Rakibul',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 5), // Space between name and email
+                  Text(
+                    'rakibul@gmail.com',
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontSize: 14,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          ListTile(
+            title: Text('Home'),
+            leading: Icon(Icons.home),
+            onTap: () {
+              MySnackBar('I am Home', context);
+            },
+          ),
+          ListTile(title: Text('Contact'), leading: Icon(Icons.contact_phone)),
+          ListTile(title: Text('Service'), leading: Icon(Icons.support_agent)),
+          ListTile(title: Text('Settings'), leading: Icon(Icons.settings)),
         ]),
       ),
-      body: Text('this is the body of homeActivity'),
+      endDrawer: Drawer(
+        child: ListView(children: [
+          DrawerHeader(
+            padding: EdgeInsets.all(0),
+            decoration:BoxDecoration(
+               color: Colors.blueGrey,
+               borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(10),
+                topRight: Radius.circular(10),
+                  topLeft: Radius.circular(10),
+                )
+            ),
+            child: Center(
+              // Centers the content both horizontally and vertically
+              child: Column(
+                mainAxisAlignment:
+                    MainAxisAlignment.center, // Vertical alignment
+                crossAxisAlignment:
+                    CrossAxisAlignment.center, // Horizontal alignment
+                children: [
+                  CircleAvatar(
+                    backgroundImage: NetworkImage(
+                      'https://e7.pngegg.com/pngimages/58/887/png-clipart-cat-cute-thing-cat.png',
+                    ),
+                    radius: 40, // Size of the profile picture
+                  ),
+                  SizedBox(height: 10), // Space between picture and name
+                  Text(
+                    'Rakibul',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 5), // Space between name and email
+                  Text(
+                    'rakibul@gmail.com',
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontSize: 14,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          ListTile(
+            title: Text('Home'),
+            leading: Icon(Icons.home),
+            onTap: () {
+              MySnackBar('I am Home', context);
+            },
+          ),
+          ListTile(title: Text('Contact'), leading: Icon(Icons.contact_phone)),
+          ListTile(title: Text('Service'), leading: Icon(Icons.support_agent)),
+          ListTile(title: Text('Settings'), leading: Icon(Icons.settings)),
+        ]),
+      ),
+    //   body: Center(child: Container(
+    //     width: 200,
+    //     height: 200,
+    //     child: Container(
+    //       margin: EdgeInsets.fromLTRB(20, 10, 0, 10),
+    //       width: 100,
+    //       height: 100,
+    //       decoration: BoxDecoration(
+    //         color: Colors.blue
+    //       ),
+    //       child: Text('Hello'),
+    //     ),
+    //     alignment: Alignment.center,
+    //     decoration: BoxDecoration(
+    //       color: Colors.blueGrey,
+    //       borderRadius: BorderRadius.all(Radius.circular(20)),
+    //     ),
+    //   ),)
+    body: SingleChildScrollView(
+  scrollDirection: Axis.vertical, // Enables horizontal scrolling
+  child: Column(
+    mainAxisAlignment: MainAxisAlignment.spaceAround,
+    children: [
+      Container(
+        height: 100,
+        width: MediaQuery.of(context).size.width, 
+      
+        margin: EdgeInsets.all(8),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+
+          Container(
+           height: 200, // 20% of screen height
+          width: 200, // 50% of screen width
+          //  alignment: Alignment.center,
+          child: Image.network(
+            'https://www.purina.in/sites/default/files/2023-05/feast.png',
+            fit: BoxFit.cover,
+          )
+        ),
+         Container(
+           height: 200, // 20% of screen height
+          width:200,
+          //  alignment: Alignment.center,
+          child: Image.network(
+            'https://www.purina.in/sites/default/files/2023-05/feast.png',
+            fit: BoxFit.cover,
+          )
+        ),
+         Container(
+           height: 200, // 20% of screen height
+         width: 200,
+          //  alignment: Alignment.center,
+          child: Image.network(
+            'https://www.purina.in/sites/default/files/2023-05/feast.png',
+            fit: BoxFit.cover,
+          )
+        )
+        ],)
+        )
+      ),
+      Container(
+        height: 100,
+        width: 100,
+        margin: EdgeInsets.all(8),
+        child: Image.network(
+          'https://e7.pngegg.com/pngimages/58/887/png-clipart-cat-cute-thing-cat.png',
+          fit: BoxFit.cover,
+        ),
+      ),
+      Container(
+        height: 100,
+        width: 100,
+        margin: EdgeInsets.all(8),
+        child: Image.network(
+          'https://e7.pngegg.com/pngimages/58/887/png-clipart-cat-cute-thing-cat.png',
+          fit: BoxFit.cover,
+        ),
+      ),
+      Container(
+        height: 100,
+        width: 100,
+        margin: EdgeInsets.all(8),
+        child: Image.network(
+          'https://e7.pngegg.com/pngimages/58/887/png-clipart-cat-cute-thing-cat.png',
+          fit: BoxFit.cover,
+        ),
+      ),
+      Container(
+        height: 100,
+        width: 100,
+        margin: EdgeInsets.all(8),
+        child: Image.network(
+          'https://e7.pngegg.com/pngimages/58/887/png-clipart-cat-cute-thing-cat.png',
+          fit: BoxFit.cover,
+        ),
+      ),
+       Container(
+        height: 100,
+        width: 100,
+        margin: EdgeInsets.all(8),
+        child: Image.network(
+          'https://e7.pngegg.com/pngimages/58/887/png-clipart-cat-cute-thing-cat.png',
+          fit: BoxFit.cover,
+        ),
+      ),
+       Container(
+        height: 100,
+        width: 100,
+        margin: EdgeInsets.all(8),
+        child: Image.network(
+          'https://e7.pngegg.com/pngimages/58/887/png-clipart-cat-cute-thing-cat.png',
+          fit: BoxFit.cover,
+        ),
+      ),
+       Container(
+        height: 100,
+        width: 100,
+        margin: EdgeInsets.all(8),
+        child: Image.network(
+          'https://e7.pngegg.com/pngimages/58/887/png-clipart-cat-cute-thing-cat.png',
+          fit: BoxFit.cover,
+        ),
+      ),
+       Container(
+        height: 100,
+        width: 100,
+        margin: EdgeInsets.all(8),
+        child: Image.network(
+          'https://e7.pngegg.com/pngimages/58/887/png-clipart-cat-cute-thing-cat.png',
+          fit: BoxFit.cover,
+        ),
+      ),
+       Container(
+        height: 100,
+        width: 100,
+        margin: EdgeInsets.all(8),
+        child: Image.network(
+          'https://e7.pngegg.com/pngimages/58/887/png-clipart-cat-cute-thing-cat.png',
+          fit: BoxFit.cover,
+        ),
+      ),
+       Container(
+        height: 100,
+        width: 100,
+        margin: EdgeInsets.all(8),
+        child: Image.network(
+          'https://e7.pngegg.com/pngimages/58/887/png-clipart-cat-cute-thing-cat.png',
+          fit: BoxFit.cover,
+        ),
+      ),
+      Container(
+        height: 400,
+        width: MediaQuery.of(context).size.width,
+        margin: EdgeInsets.all(8),
+        child: Container(
+          height: MediaQuery.of(context).size.height * 0.2, // 20% of screen height,
+          width: MediaQuery.of(context).size.width * 0.5, // 50% of screen width
+          alignment: Alignment.center,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextButton(onPressed: (){}, 
+              child: 
+              Text("text Button")
+              ),
+              ElevatedButton(onPressed: (){}, child: Text('Elevated Button')),
+              OutlinedButton(onPressed: (){}, child: Text('Outlined Button')),
+            ]
+          ),
+        )
+      ),
+    ],
+  ),
+),
+
     );
   }
 }
