@@ -8,7 +8,18 @@ class Page1 extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Scaffold(
+      appBar: AppBar(
+        flexibleSpace: Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomRight,
+          colors: [Colors.pink, Colors.lightBlue],  )
+      ),
+    ),
+      ),
+      body: Center(
       child: CircleAvatar(
         radius: 50,
         child: GestureDetector(
@@ -22,6 +33,7 @@ class Page1 extends StatelessWidget
           },
         ),
       ),
+    ),
     );
   }
 }
