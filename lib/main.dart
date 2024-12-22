@@ -295,21 +295,90 @@
 // }
 
 
+//
+// import 'package:appone/Page1.dart';
+// import 'package:appone/Page2.dart';
+// import 'package:appone/Page3.dart';
+// import 'package:flutter/material.dart';
+//
+// void main() {
+//   runApp(MyApp());
+// }
+//
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       home: HomePage(),
+//     );
+//   }
+// }
+//
+// class HomePage extends StatefulWidget {
+//   const HomePage({super.key});
+//
+//   @override
+//   State<HomePage> createState() => _HomePageState();
+// }
+//
+// class _HomePageState extends State<HomePage> {
+//         var _currentIndex = 0;
+//         final pages = [
+//           Page1(),
+//           Page2(),
+//           Page3()
+//         ];
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       bottomNavigationBar: BottomNavigationBar(
+//         currentIndex: _currentIndex,
+//         items: [
+//           BottomNavigationBarItem(
+//             icon: Icon(Icons.umbrella),
+//             label: 'umbrella',
+//           ),
+//           BottomNavigationBarItem(
+//             icon: Icon(Icons.balance),
+//             label: 'balance',
+//           ),
+//           BottomNavigationBarItem(
+//             icon: Icon(Icons.home),
+//             label: 'home',
+//           ),
+//         ],
+//         onTap: (index){
+// setState(() {
+//   _currentIndex = index;
+// });
+//         },
+//       ),
+//       body: pages[_currentIndex],
+//     );
+//   }
+// }
 
-import 'package:appone/Page1.dart';
-import 'package:appone/Page2.dart';
-import 'package:appone/Page3.dart';
+
+import 'package:appone/Recieve.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'Data.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => Data(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       home: HomePage(),
     );
   }
@@ -323,38 +392,67 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-        var _currentIndex = 0;
-        final pages = [
-          Page1(),
-          Page2(),
-          Page3()
-        ];
   @override
   Widget build(BuildContext context) {
+    final providerData = Provider.of<Data>(context);
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.umbrella),
-            label: 'umbrella',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.balance),
-            label: 'balance',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'home',
-          ),
-        ],
-        onTap: (index){
-setState(() {
-  _currentIndex = index;
-});
-        },
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              providerData.value.toString(),
+              style: TextStyle(fontSize: 30),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                providerData.Increament();
+              },
+              child: Text('I am a button'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+               Navigator.push(context, MaterialPageRoute(builder: (context) => Recieve()));
+              },
+              child: Text('I am a navigator'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+               showModalBottomSheet(context: context, builder: (context) {
+
+                 return(
+                 Container(
+                   height: 250,
+                   width: MediaQuery.of(context).size.width,
+                   padding: EdgeInsets.all(10),
+                   child: Column(
+                     children: [
+                       ListTile(
+                         title: Text('hello'),
+                         textColor: Colors.red,
+                         subtitle: Text('hello there'),
+                         trailing: Icon(Icons.camera),
+                       ),
+                       ListTile(
+                         title: Text('hello'),
+                       ),
+                       ListTile(
+                         title: Text('hello'),
+                       ),
+
+                     ],
+                   ),
+                 )
+                 );
+               });
+              },
+              child: Text('click me to open modal'),
+            ),
+          ],
+        ),
       ),
-      body: pages[_currentIndex],
     );
   }
 }
+
+
